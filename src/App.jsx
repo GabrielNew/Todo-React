@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { MdDelete} from "react-icons/md";
 
 const App = () => {
   const ENTER_KEY = 13;
   const ESC_KEY = 27;
 
+  const [todos, setTodos] = useState([]);
   const [value, setValue] = useState('');
 
   const onChange = (event) => {
@@ -15,7 +17,7 @@ const App = () => {
   }
 
   const submit = () => {
-    console.log(value);
+    setTodos([...todos, {id:5, title: value, checked: false}]);
     erase();
   }
 
@@ -38,6 +40,16 @@ const App = () => {
              value={value} 
              onChange={onChange}
              onKeyDown={onKeyDown}/>
+      <ul className="todoList">
+        {
+          todos.map((todo) => (
+            <li key={new Date().getTime()}>
+              <span className="todo">{todo.title}</span>
+              <button type="button" className="remove"><MdDelete size={28}/></button>
+            </li>
+          ))
+        }
+      </ul>
     </section>
    </section>
    )

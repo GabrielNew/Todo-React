@@ -8,6 +8,10 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  background-color: #ffeaa7;
+}
+
 body,
 h1,
 h2,
@@ -19,11 +23,11 @@ p,
 ol,
 ul,
 textarea {
-  background-color: #ffeaa7;
   user-select: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+  padding: 0;
 }
 
 ol,
