@@ -17,7 +17,7 @@ const App = () => {
   }
 
   const submit = () => {
-    setTodos([...todos, {id:5, title: value, checked: false}]);
+    setTodos([...todos, {id: new Date().getTime(), title: value, checked: false}]);
     erase();
   }
 
@@ -27,6 +27,10 @@ const App = () => {
     } else if(event.which === ESC_KEY) {
       erase();
     }
+  }
+
+  const toggleTask = (todo) => {
+    console.log(todo)
   }
 
   return (
@@ -43,8 +47,8 @@ const App = () => {
       <ul className="todoList">
         {
           todos.map((todo) => (
-            <li key={new Date().getTime()}>
-              <span className="todo">{todo.title}</span>
+            <li key={todo.id}>
+              <span className="todo" onClick={() => toggleTask(todo)} role="button">{todo.title}</span>
               <button type="button" className="remove"><MdDelete size={28}/></button>
             </li>
           ))
