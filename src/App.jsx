@@ -30,8 +30,8 @@ const App = () => {
   }
 
   const toggleTask = (todo) => {
-    console.log(todo)
-  }
+    setTodos(todos.map((obj) => (obj.id === todo.id ? { ...obj, checked: !todo.checked } : obj)));
+  };
 
   return (
   <section id="app" className="container">
@@ -47,8 +47,8 @@ const App = () => {
       <ul className="todoList">
         {
           todos.map((todo) => (
-            <li key={todo.id}>
-              <span className="todo" onClick={() => toggleTask(todo)} role="button">{todo.title}</span>
+            <li key={todo.id.toString()}>
+              <span className={['todo', todo.checked ? "checked": ""].join(" ")} tabIndex={0} onClick={() => toggleTask(todo)} role="button">{todo.title}</span>
               <button type="button" className="remove"><MdDelete size={28}/></button>
             </li>
           ))
