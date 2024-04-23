@@ -33,6 +33,10 @@ const App = () => {
     setTodos(todos.map((obj) => (obj.id === todo.id ? { ...obj, checked: !todo.checked } : obj)));
   };
 
+  const onRemove = (todo) => {
+    setTodos(todos.filter((obj) => obj.id !== todo.id));
+  }
+
   return (
   <section id="app" className="container">
     <header> 
@@ -49,7 +53,7 @@ const App = () => {
           todos.map((todo) => (
             <li key={todo.id.toString()}>
               <span className={['todo', todo.checked ? "checked": ""].join(" ")} tabIndex={0} onClick={() => toggleTask(todo)} role="button">{todo.title}</span>
-              <button type="button" className="remove"><MdDelete size={28}/></button>
+              <button type="button" onClick={() => onRemove(todo)} className="remove"><MdDelete size={28}/></button>
             </li>
           ))
         }
